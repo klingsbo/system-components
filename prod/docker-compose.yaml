@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  user-registrations-postgres-prod:
+    image: postgres:${USER_REGISTRATIONS_POSTGRES_VERSION}
+    container_name: user-registrations-postgres-prod
+    restart: always
+    environment:
+      - POSTGRES_DB=user-registrations
+      - POSTGRES_USER=${USER_REGISTRATIONS_POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${USER_REGISTRATIONS_POSTGRES_PASSWORD}
+    networks:
+      - user-registrations-network-prod
+    ports:
+      - '5401:5432'
+    volumes:
+      - user-registrations-postgres-volume-prod:/var/lib/postgresql/data
+
+volumes:
+  user-registrations-postgres-volume-prod:
+    driver: local
+
+networks:
+  user-registrations-network-prod:
+    driver: bridge
