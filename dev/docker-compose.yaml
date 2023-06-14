@@ -2,13 +2,13 @@ version: '2'
 
 services:
   user-accounts-postgres-dev:
-    image: postgres:${DEFAULT_POSTGRES_VERSION}
+    image: postgres:${USER_ACCOUNTS_POSTGRES_VERSION}
     container_name: user-accounts-postgres-dev
     restart: always
     environment:
       - POSTGRES_DB=user-accounts
-      - POSTGRES_USER=${DEFAULT_POSTGRES_USERNAME}
-      - POSTGRES_PASSWORD=${DEFAULT_POSTGRES_PASSWORD}
+      - POSTGRES_USER=${USER_ACCOUNTS_POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${USER_ACCOUNTS_POSTGRES_PASSWORD}
     networks:
       - user-accounts-network-dev
     ports:
