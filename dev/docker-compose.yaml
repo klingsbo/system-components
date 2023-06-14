@@ -1,25 +1,25 @@
 version: '2'
 
 services:
-  user-registrations-postgres-dev:
+  user-accounts-postgres-dev:
     image: postgres:${DEFAULT_POSTGRES_VERSION}
-    container_name: user-registrations-postgres-dev
+    container_name: user-accounts-postgres-dev
     restart: always
     environment:
-      - POSTGRES_DB=user-registrations
+      - POSTGRES_DB=user-accounts
       - POSTGRES_USER=${DEFAULT_POSTGRES_USERNAME}
       - POSTGRES_PASSWORD=${DEFAULT_POSTGRES_PASSWORD}
     networks:
-      - user-registrations-network-dev
+      - user-accounts-network-dev
     ports:
       - '5401:5432'
     volumes:
-      - user-registrations-postgres-volume-dev:/var/lib/postgresql/data
+      - user-accounts-postgres-volume-dev:/var/lib/postgresql/data
 
 volumes:
-  user-registrations-postgres-volume-dev:
+  user-accounts-postgres-volume-dev:
     driver: local
 
 networks:
-  user-registrations-network-dev:
+  user-accounts-network-dev:
     driver: bridge
